@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RightHand
   - LeftHand
+  - HoldInDistance
   layers:
   - Default
   - TransparentFX
