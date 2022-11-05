@@ -7,6 +7,9 @@ TagManager:
   - RightHand
   - LeftHand
   - HoldInDistance
+  - Ammo
+  - Health
+  - Holster
   layers:
   - Default
   - TransparentFX
@@ -17,9 +20,9 @@ TagManager:
   - 
   - Player
   - Interactible
-  - 
-  - 
-  - 
+  - InteractibleAmmo
+  - InteractibleHealth
+  - InteractibleObstacle
   - 
   - 
   - 
