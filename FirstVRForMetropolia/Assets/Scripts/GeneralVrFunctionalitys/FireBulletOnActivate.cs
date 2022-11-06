@@ -42,7 +42,30 @@ public class FireBulletOnActivate : MonoBehaviour
         if (collision.collider.CompareTag("Holster"))
         {
             transform.SetParent(collision.transform);
-            this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+            this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        }
+        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("RightHand"))
+        {
+            Debug.Log("ase irtoaa holstrerista!!!");
+            this.gameObject.transform.SetParent(GameObject.Find("GunHolder").transform);
+            this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            this.gameObject.transform.localScale = new Vector3(4, 4, 4);
         }
     }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.collider.CompareTag("Holster"))
+        {
+            //transform.SetParent(collision.transform);
+            this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+        }
+    }
+
+   
+    
 }
