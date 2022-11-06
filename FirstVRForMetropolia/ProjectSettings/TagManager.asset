@@ -10,6 +10,7 @@ TagManager:
   - Ammo
   - Health
   - Holster
+  - Blade
   layers:
   - Default
   - TransparentFX
