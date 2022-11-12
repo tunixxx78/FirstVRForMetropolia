@@ -11,6 +11,8 @@ TagManager:
   - Health
   - Holster
   - Blade
+  - Stopper
+  - Bullet
   layers:
   - Default
   - TransparentFX
