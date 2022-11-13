@@ -13,6 +13,7 @@ TagManager:
   - Blade
   - Stopper
   - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -26,8 +27,8 @@ TagManager:
   - InteractibleAmmo
   - InteractibleHealth
   - InteractibleObstacle
-  - 
-  - 
+  - PlayerAids
+  - Bullet
   - 
   - 
   - 

@@ -6,7 +6,7 @@ public class MovingPlatform : MonoBehaviour
 {
     [SerializeField] Transform  targetPosition;
     [SerializeField] float ObjectSpeed;
-    [SerializeField] GameObject plr, plrHolder;
+    [SerializeField] GameObject plr, moveButton;
     Rigidbody platformRB;
     bool canMove = false;
 
@@ -37,6 +37,7 @@ public class MovingPlatform : MonoBehaviour
         {
             Debug.Log("LIIKKEEN OLISI PITÄNYT LOPPUA");
             canMove = false;
+            Destroy(moveButton);
             //plr.transform.SetParent(plrHolder.transform);
         }
     }

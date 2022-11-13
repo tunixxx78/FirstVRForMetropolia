@@ -6,32 +6,54 @@ using UnityEngine.AI;
 public class EnemyBase : MonoBehaviour
 {
     NavMeshAgent enemyAgent;
-    [SerializeField] Transform targetPLR;
-    [SerializeField] float noticeDistance;
-    Vector3 destination;
+    public Transform targetPLR;
+    [SerializeField] float noticeDistance, attackDistance, shootingDistance;
+    Vector3 position;
+    [SerializeField] bool enemyOne, enemyTwo, enemyThree, canShoot;
+    [SerializeField] float shootingDelay;
+
+    Animator enemyAnimator;
 
     private void Awake()
     {
         enemyAgent = GetComponent<NavMeshAgent>();
+        enemyAnimator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
     {
-        destination = enemyAgent.destination;
+        position = this.transform.position;
+        canShoot = true;
     }
 
     private void Update()
     {
-        destination = enemyAgent.destination;
+        position = this.transform.position;
 
-        if (Vector3.Distance(destination, targetPLR.position) < noticeDistance)
+        if (Vector3.Distance(position, targetPLR.position) < noticeDistance)
         {
             enemyAgent.isStopped = false;
+            enemyAgent.speed = 0.5f;
             enemyAgent.SetDestination(targetPLR.position);
+
+            if(Vector3.Distance(position, targetPLR.position) < attackDistance && enemyTwo)
+            {
+                enemyAnimator.SetTrigger("Attack");
+            }
+            
         }
-        if (Vector3.Distance(destination, targetPLR.position) > noticeDistance)
+        if (Vector3.Distance(position, targetPLR.position) > noticeDistance)
         {
+            Debug.Log("Enemyn olisi pitänyt pysähtyä");
             enemyAgent.isStopped = true;
+            enemyAgent.speed = 0;
+        }
+        if (Vector3.Distance(position, targetPLR.position) < shootingDistance && enemyThree && canShoot)
+        {
+            Vector3 direction = targetPLR.position - position;
+            GetComponent<ShootingOne>().Shoot(direction);
+
+            StartCoroutine(DelayOfShooting());
         }
         
     }
@@ -49,5 +71,15 @@ public class EnemyBase : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    IEnumerator DelayOfShooting()
+    {
+        canShoot = false;
+
+        yield return new WaitForSeconds(shootingDelay);
+
+        canShoot = true;
+
     }
 }

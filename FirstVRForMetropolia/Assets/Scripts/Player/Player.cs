@@ -53,5 +53,11 @@ public class Player : MonoBehaviour
             plrHealth--;
             healthBarScript.SetHealth(plrHealth);
         }
+
+        if (other.CompareTag("Enemy"))
+        {
+            plrHealth--;
+            healthBarScript.SetHealth(plrHealth);
+        }
     }
 }
