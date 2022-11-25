@@ -29,6 +29,7 @@ TagManager:
   - InteractibleObstacle
   - PlayerAids
   - Bullet
+  - EnemyBullet
   - 
   - 
   - 
@@ -36,9 +37,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - PostProcess
+  - saberGlow
   - 
   - 
   - 

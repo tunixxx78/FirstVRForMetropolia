@@ -9,8 +9,8 @@ public class EnemyBase : MonoBehaviour
     public Transform targetPLR;
     [SerializeField] float noticeDistance, attackDistance, shootingDistance, enemySpeed;
     Vector3 position;
-    [SerializeField] bool enemyOne, enemyTwo, enemyThree, canShoot;
-    [SerializeField] float shootingDelay;
+    [SerializeField] bool enemyOne, enemyTwo, enemyThree, canShoot, canWalk, canAttack;
+    [SerializeField] float shootingDelay, shootingAnimationDelay;
 
     Animator enemyAnimator;
     [SerializeField] Animator enemyBaseAnimator;
@@ -18,7 +18,9 @@ public class EnemyBase : MonoBehaviour
     private void Awake()
     {
         enemyAgent = GetComponent<NavMeshAgent>();
-        enemyAnimator = GetComponentInChildren<Animator>();
+        //enemyAnimator = GetComponentInChildren<Animator>();
+        canAttack = true;
+        canWalk = true;
     }
 
     private void Start()
@@ -31,23 +33,31 @@ public class EnemyBase : MonoBehaviour
     {
         position = this.transform.position;
 
-        if (Vector3.Distance(position, targetPLR.position) < noticeDistance)
+        if (Vector3.Distance(position, targetPLR.position) < noticeDistance && canWalk)
         {
+
             enemyAgent.isStopped = false;
             enemyAgent.speed = enemySpeed;
             enemyAgent.SetDestination(targetPLR.position);
             enemyBaseAnimator.SetBool("EnemyWalk", true);
 
-            if(Vector3.Distance(position, targetPLR.position) < attackDistance && enemyTwo)
-            {
-                enemyAnimator.SetTrigger("Attack");
-                enemyBaseAnimator.SetTrigger("EnemyAttack");
-                //enemyAgent.isStopped = true;
-            }
+            
             
         }
+        if (Vector3.Distance(position, targetPLR.position) < attackDistance && enemyTwo && canAttack)
+        {
+            canWalk = false;
+            //enemyAnimator.SetTrigger("EnemyAttack");
+            enemyBaseAnimator.SetTrigger("EnemyAttack");
+            enemyAgent.speed = 0.01f;
+            //enemyAgent.isStopped = true;
+            enemyBaseAnimator.SetBool("EnemyWalk", false);
+        }
+
         if (Vector3.Distance(position, targetPLR.position) > noticeDistance)
         {
+            canAttack = true;
+            canWalk = true;
             Debug.Log("Enemyn olisi pitänyt pysähtyä");
             enemyAgent.isStopped = true;
             enemyAgent.speed = 0;
@@ -55,8 +65,8 @@ public class EnemyBase : MonoBehaviour
         }
         if (Vector3.Distance(position, targetPLR.position) < shootingDistance && enemyThree && canShoot)
         {
-            Vector3 direction = targetPLR.position - position;
-            GetComponent<ShootingOne>().Shoot(direction);
+            enemyBaseAnimator.SetTrigger("EnemyShoot");
+            StartCoroutine(ShootNow());
 
             StartCoroutine(DelayOfShooting());
         }
@@ -86,5 +96,12 @@ public class EnemyBase : MonoBehaviour
 
         canShoot = true;
 
+    }
+    IEnumerator ShootNow()
+    {
+        yield return new WaitForSeconds(shootingAnimationDelay);
+
+        Vector3 direction = targetPLR.position - position;
+        GetComponent<ShootingOne>().Shoot(direction);
     }
 }
