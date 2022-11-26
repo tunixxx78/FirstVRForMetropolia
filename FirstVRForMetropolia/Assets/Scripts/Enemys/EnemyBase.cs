@@ -27,6 +27,7 @@ public class EnemyBase : MonoBehaviour
     {
         position = this.transform.position;
         canShoot = true;
+        enemyAgent.speed = 0;
     }
 
     private void Update()
@@ -49,21 +50,27 @@ public class EnemyBase : MonoBehaviour
             canWalk = false;
             //enemyAnimator.SetTrigger("EnemyAttack");
             enemyBaseAnimator.SetTrigger("EnemyAttack");
-            enemyAgent.speed = 0.01f;
+            enemyAgent.speed = 0.1f;
             //enemyAgent.isStopped = true;
             enemyBaseAnimator.SetBool("EnemyWalk", false);
         }
 
         if (Vector3.Distance(position, targetPLR.position) > noticeDistance)
         {
-            canAttack = true;
             canWalk = true;
-            Debug.Log("Enemyn olisi pitänyt pysähtyä");
-            enemyAgent.isStopped = true;
+            //Debug.Log("Enemyn olisi pitänyt pysähtyä");
+            //enemyAgent.isStopped = true;
             enemyAgent.speed = 0;
             enemyBaseAnimator.SetBool("EnemyWalk", false);
         }
-        if (Vector3.Distance(position, targetPLR.position) < shootingDistance && enemyThree && canShoot)
+        if (Vector3.Distance(position, targetPLR.position) > attackDistance)
+        {
+            canWalk = true;
+            enemyAgent.speed = enemySpeed;
+            enemyBaseAnimator.SetBool("EnemyWalk", true);
+        }
+
+            if (Vector3.Distance(position, targetPLR.position) < shootingDistance && enemyThree && canShoot)
         {
             enemyBaseAnimator.SetTrigger("EnemyShoot");
             StartCoroutine(ShootNow());

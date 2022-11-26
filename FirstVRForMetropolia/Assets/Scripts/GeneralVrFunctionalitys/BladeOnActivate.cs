@@ -8,6 +8,12 @@ public class BladeOnActivate : MonoBehaviour
 
     [SerializeField] GameObject lightSaber;
     bool isOn = false;
+    SFXHOLDER sFXHOLDER;
+
+    private void Awake()
+    {
+        sFXHOLDER = FindObjectOfType<SFXHOLDER>();
+    }
 
     private void Start()
     {
@@ -20,11 +26,15 @@ public class BladeOnActivate : MonoBehaviour
     {
         if(isOn == false)
         {
+            sFXHOLDER.saberOn.Play();
+            sFXHOLDER.saber.Play();
             lightSaber.SetActive(true);
             isOn = true;
         }
         else if(isOn)
         {
+            sFXHOLDER.saberOff.Play();
+            sFXHOLDER.saber.Stop();
             lightSaber.SetActive(false);
             isOn = false;
         }

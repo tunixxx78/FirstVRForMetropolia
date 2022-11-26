@@ -12,10 +12,12 @@ public class FireBulletOnActivate : MonoBehaviour
     public int ammoAmount = 10;
 
     AmmoBarScript ammoBarScript;
+    SFXHOLDER sFXHOLDER;
 
     private void Awake()
     {
         ammoBarScript = FindObjectOfType<AmmoBarScript>();
+        sFXHOLDER = FindObjectOfType<SFXHOLDER>();
     }
 
     private void Start()
@@ -28,6 +30,7 @@ public class FireBulletOnActivate : MonoBehaviour
 
     public void FireBullet(ActivateEventArgs arg)
     {
+        sFXHOLDER.blaster.Play();
         GameObject spawnedBullet = Instantiate(bullet);
         spawnedBullet.transform.position = spawnPoint.position;
         spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * fireSpeed * Time.deltaTime;
