@@ -60,4 +60,13 @@ public class Player : MonoBehaviour
             healthBarScript.SetHealth(plrHealth);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.collider.tag == "Enemy")
+        {
+            plrHealth--;
+            healthBarScript.SetHealth(plrHealth);
+        }
+    }
 }

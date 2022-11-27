@@ -9,11 +9,20 @@ public class EnemyPlantBase : MonoBehaviour
     Animator plantAnimator;
     Vector3 position;
     bool hasNoticed;
+    [SerializeField] int plantHealth, plantMaxHealth;
+    HealthBarScript healthBarScript;
 
     private void Awake()
     {
         plantAnimator = GetComponent<Animator>();
         hasNoticed = false;
+        healthBarScript = GetComponentInChildren<HealthBarScript>();
+        plantMaxHealth = plantHealth;
+    }
+
+    private void Start()
+    {
+        healthBarScript.SetMaxValue(plantHealth);
     }
 
     private void Update()
@@ -34,20 +43,27 @@ public class EnemyPlantBase : MonoBehaviour
             
         }
 
+        if(plantHealth <= 0)
+        {
+            Destroy(this.gameObject);
+        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "Blade" || collision.collider.tag == "Bullet")
         {
-            Destroy(this.gameObject);
+            plantHealth--;
+            healthBarScript.SetHealth(plantHealth);
         }
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Blade"))
         {
-            Destroy(this.gameObject);
+            plantHealth--;
+            healthBarScript.SetHealth(plantHealth);
         }
     }
 }

@@ -7,17 +7,20 @@ public class FireBulletOnActivate : MonoBehaviour
 {
     public GameObject bullet;
     public Transform spawnPoint;
-    public float fireSpeed = 100;
+    public float fireSpeed = 100, plrShootDelay;
 
     public int ammoAmount = 10;
 
     AmmoBarScript ammoBarScript;
     SFXHOLDER sFXHOLDER;
 
+    bool canShoot;
+
     private void Awake()
     {
         ammoBarScript = FindObjectOfType<AmmoBarScript>();
         sFXHOLDER = FindObjectOfType<SFXHOLDER>();
+        canShoot = true;
     }
 
     private void Start()
@@ -30,14 +33,21 @@ public class FireBulletOnActivate : MonoBehaviour
 
     public void FireBullet(ActivateEventArgs arg)
     {
-        sFXHOLDER.blaster.Play();
-        GameObject spawnedBullet = Instantiate(bullet);
-        spawnedBullet.transform.position = spawnPoint.position;
-        spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * fireSpeed * Time.deltaTime;
-        Destroy(spawnedBullet, 5f);
+        if (canShoot)
+        {
+            canShoot = false;
+            sFXHOLDER.blaster.Play();
+            GameObject spawnedBullet = Instantiate(bullet);
+            spawnedBullet.transform.position = spawnPoint.position;
+            spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * fireSpeed * Time.deltaTime;
+            Destroy(spawnedBullet, 5f);
 
-        ammoAmount--;
-        ammoBarScript.SetAmmo(ammoAmount);
+            ammoAmount--;
+            ammoBarScript.SetAmmo(ammoAmount);
+
+            StartCoroutine(CanShootDelay());
+        }
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -67,6 +77,12 @@ public class FireBulletOnActivate : MonoBehaviour
             //transform.SetParent(collision.transform);
             this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         }
+    }
+
+    IEnumerator CanShootDelay()
+    {
+        yield return new WaitForSeconds(plrShootDelay);
+        canShoot = true;
     }
 
    
