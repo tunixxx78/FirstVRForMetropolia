@@ -88,7 +88,7 @@ Material:
     - _BottomColor: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 0.64960736, g: 0.972549, b: 0.22352937, a: 1}
     - _ElectricitySpeed: {r: 0, g: 0.5, b: 0, a: 0}
-    - _EmissionColor: {r: 0.19484526, g: 0.66067374, b: 0.04051303, a: 1}
+    - _EmissionColor: {r: 0.3413924, g: 1.1470784, b: 0.06827848, a: 1}
     - _NoiseSpeed: {r: 0.1, g: -0.5, b: 0, a: 0}
     - _SaberColor: {r: 0.42763406, g: 0.9811321, b: 0.24528292, a: 0}
     - _TopColor: {r: 1, g: 1, b: 1, a: 0}
