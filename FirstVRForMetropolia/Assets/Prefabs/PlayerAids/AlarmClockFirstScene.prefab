@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7579690887138365767}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.18166742, y: 0.35079312, z: 3.0678673}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7579690887138365767}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -6373483690846238654, guid: b2fa6eea9d6b45a47a490db674930075, type: 3}
 --- !u!23 &7579690887138365763
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 91409e45a4b8f57409ea1ead9db14e16, type: 2}
+  - {fileID: -1971376366294008427, guid: b2fa6eea9d6b45a47a490db674930075, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -253,3 +253,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ab30de47ba59d44e9ee6b73b281be83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  doorToOpen: {fileID: 0}
