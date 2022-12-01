@@ -59,6 +59,18 @@ public class Player : MonoBehaviour
             plrHealth--;
             healthBarScript.SetHealth(plrHealth);
         }
+        if (other.CompareTag("Elevator"))
+        {
+            transform.SetParent(other.transform);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Elevator"))
+        {
+            transform.SetParent(GameObject.Find("PlayerHolder").transform);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -67,6 +79,17 @@ public class Player : MonoBehaviour
         {
             plrHealth--;
             healthBarScript.SetHealth(plrHealth);
+        }
+        if(collision.collider.tag == "Elevator")
+        {
+            transform.SetParent(collision.transform);
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if(collision.collider.tag == "Elevator")
+        {
+            transform.SetParent(GameObject.Find("PlayerHolder").transform); 
         }
     }
 }

@@ -14,6 +14,7 @@ TagManager:
   - Stopper
   - Bullet
   - Enemy
+  - Elevator
   layers:
   - Default
   - TransparentFX
