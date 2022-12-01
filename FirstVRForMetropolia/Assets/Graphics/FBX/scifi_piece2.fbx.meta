@@ -12,7 +12,147 @@ ModelImporter:
   - first:
       74: 7908855148871022235
     second: peitto|peitto|peitto|PlaneAction.002
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CorridorCL
+    second: {fileID: 2100000, guid: 14dc7d9c391351a428eb8167e7b4656b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gray4
+    second: {fileID: 2100000, guid: b9e94727761ae604087cb816078bea61, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gray6
+    second: {fileID: 2100000, guid: 4056eea7697f7b54a9aee07182ad77ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gray8
+    second: {fileID: 2100000, guid: ee9eef26334e6bf4fa3ce0d7dbb4e18d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: b56c3e1f1dd3ebc4d841c33b50eedaea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.002
+    second: {fileID: 2100000, guid: ad4bc0f28d31dd748b83ea05e9584c31, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.003
+    second: {fileID: 2100000, guid: f230006ecf129da469e3e87fb7c916f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: RoundRoom
+    second: {fileID: 2100000, guid: dab7e08b4cd914b439d4c3ea540ed163, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ammobar
+    second: {fileID: 2100000, guid: ecaf91a22c4aeaf4589e5540d649f60d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: boxCL
+    second: {fileID: 2100000, guid: 0cd2720ca748fe1459fd96c6092a6853, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: door2_CL
+    second: {fileID: 2100000, guid: b4afd371fe0aaeb439e364366e1f2ab7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: doorelevatorCL.001
+    second: {fileID: 2100000, guid: 763ac496a5fd54e47ad2e5e018244d46, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: elevator
+    second: {fileID: 2100000, guid: f85890ea0966c644c84a0909707dbb87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: elevator_frame
+    second: {fileID: 2100000, guid: b49b6cfbfc98e414cb901d170e18e587, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: elevator_pipe
+    second: {fileID: 2100000, guid: ac515e6d32daffd40be2faf2eeab75d0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: glass
+    second: {fileID: 2100000, guid: cdd1bb33fff23d04e941a1c902c12717, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ground
+    second: {fileID: 2100000, guid: 42a61ab038ccb4a40b357dd57a69a57e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: healthbar
+    second: {fileID: 2100000, guid: e1fa3d19fb11a6f40b96c3cc0baebebb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light elevator.002
+    second: {fileID: 2100000, guid: 5b8542d6089f7ed4f8c003ea87b19add, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light floor
+    second: {fileID: 2100000, guid: 820eddcd6d30cd344acf04ccf3f53d8e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light floor.001
+    second: {fileID: 2100000, guid: 2a079121da0f89c45948602d89d57c1d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light wall
+    second: {fileID: 2100000, guid: a37247285ce25294a87a9a8425b94bae, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: light wall.001
+    second: {fileID: 2100000, guid: 0e67f02937c0a0a49b0659fa86845a87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: med_pack
+    second: {fileID: 2100000, guid: 7325e598b397d3647bea9d17c2b07d15, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mushroom
+    second: {fileID: 2100000, guid: e0e3ba78782000e46823bda48e48dc43, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mushroom.001
+    second: {fileID: 2100000, guid: 4bd367c9db9a64b4fbc2698a5cffbb77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: table
+    second: {fileID: 2100000, guid: 0166846f89448854daad3e5aef1ced7c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: walls
+    second: {fileID: 2100000, guid: eb97d5759d879444abc0bc43dd802471, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
