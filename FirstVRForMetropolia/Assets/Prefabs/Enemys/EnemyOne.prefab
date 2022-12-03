@@ -2250,12 +2250,15 @@ MonoBehaviour:
   attackDistance: 0
   shootingDistance: 0
   enemySpeed: 3
+  onHitDelay: 0
   enemyOne: 1
   enemyTwo: 0
   enemyThree: 0
   canShoot: 0
   canWalk: 0
   canAttack: 0
+  canFunctions: 0
+  canBeHit: 0
   shootingDelay: 0
   shootingAnimationDelay: 0
   enemyBaseAnimator: {fileID: 6566317109428714422}
