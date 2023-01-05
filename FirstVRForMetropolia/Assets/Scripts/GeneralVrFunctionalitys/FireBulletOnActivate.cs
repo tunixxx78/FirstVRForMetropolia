@@ -7,7 +7,7 @@ public class FireBulletOnActivate : MonoBehaviour
 {
     public GameObject bullet;
     public Transform spawnPoint;
-    public float fireSpeed = 100, plrShootDelay;
+    public float fireSpeed = 1000, plrShootDelay;
 
     public int ammoAmount = 10;
 
@@ -33,7 +33,7 @@ public class FireBulletOnActivate : MonoBehaviour
 
     public void FireBullet(ActivateEventArgs arg)
     {
-        if (canShoot)
+        if (canShoot && ammoAmount > 0)
         {
             canShoot = false;
             sFXHOLDER.blaster.Play();

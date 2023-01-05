@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
             Debug.Log("Ammo osuu pelaajaan!");
             ammoBarScript.SetMaxAmmo(fireBulletOnActivate.ammoAmount + 5);
             fireBulletOnActivate.ammoAmount += 5;
+
+            Destroy(other.gameObject, 1f);
         }
         if (other.CompareTag("Health"))
         {
@@ -41,11 +43,15 @@ public class Player : MonoBehaviour
             {
                 plrHealth = plrHealth + healthCollectibleAmount;
                 healthBarScript.SetHealth(plrHealth);
+
+                Destroy(other.gameObject, 1f);
             }
             else
             {
                 plrHealth = plrMaxHealth;
                 healthBarScript.SetHealth(plrHealth);
+
+                Destroy(other.gameObject, 1f);
             }
         }
         if (other.CompareTag("HoldInDistance"))
