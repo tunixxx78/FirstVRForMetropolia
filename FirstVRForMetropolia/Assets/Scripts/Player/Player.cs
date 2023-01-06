@@ -67,7 +67,9 @@ public class Player : MonoBehaviour
         }
         if (other.CompareTag("Elevator"))
         {
-            transform.SetParent(other.transform);
+            //transform.SetParent(other.transform);
+            GameObject elev = GameObject.Find("Hissi");
+            this.gameObject.transform.SetParent(elev.transform);
         }
     }
 
@@ -75,7 +77,9 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Elevator"))
         {
-            transform.SetParent(GameObject.Find("PlayerHolder").transform);
+            //transform.SetParent(GameObject.Find("PlayerHolder").transform);
+            GameObject plrHold = GameObject.Find("PlayerHolder");
+            this.gameObject.transform.SetParent(plrHold.transform);
         }
     }
 
