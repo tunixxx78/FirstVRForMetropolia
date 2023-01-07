@@ -398,7 +398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noticeDistance: 8
-  attackDistance: 3
+  attackDistance: 5
   plr: {fileID: 0}
   plantHealth: 3
   plantMaxHealth: 0
@@ -1274,7 +1274,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4509521451270274553}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.38

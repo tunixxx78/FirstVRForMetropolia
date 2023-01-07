@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class ObjectDestroyer : MonoBehaviour
 {
-    [SerializeField] string tagName;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag(tagName))
+        if (other.gameObject)
         {
-            Destroy(gameObject, 5f);
+            Destroy(this.gameObject);
         }
     }
 }
