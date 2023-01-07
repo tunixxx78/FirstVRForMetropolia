@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
             Debug.Log("Ammo osuu pelaajaan!");
             ammoBarScript.SetMaxAmmo(fireBulletOnActivate.ammoAmount + 5);
             fireBulletOnActivate.ammoAmount += 5;
+
+            Destroy(other.gameObject, 1f);
         }
         if (other.CompareTag("Health"))
         {
@@ -41,11 +43,15 @@ public class Player : MonoBehaviour
             {
                 plrHealth = plrHealth + healthCollectibleAmount;
                 healthBarScript.SetHealth(plrHealth);
+
+                Destroy(other.gameObject, 1f);
             }
             else
             {
                 plrHealth = plrMaxHealth;
                 healthBarScript.SetHealth(plrHealth);
+
+                Destroy(other.gameObject, 1f);
             }
         }
         if (other.CompareTag("HoldInDistance"))
@@ -61,7 +67,9 @@ public class Player : MonoBehaviour
         }
         if (other.CompareTag("Elevator"))
         {
-            transform.SetParent(other.transform);
+            //transform.SetParent(other.transform);
+            GameObject elev = GameObject.Find("Hissi");
+            this.gameObject.transform.SetParent(elev.transform);
         }
     }
 
@@ -69,7 +77,9 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Elevator"))
         {
-            transform.SetParent(GameObject.Find("PlayerHolder").transform);
+            //transform.SetParent(GameObject.Find("PlayerHolder").transform);
+            GameObject plrHold = GameObject.Find("PlayerHolder");
+            this.gameObject.transform.SetParent(plrHold.transform);
         }
     }
 
