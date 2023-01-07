@@ -8,9 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: EnemyBulletMaterial
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ValidKeywords:
-  - _EMISSION
+  m_Shader: {fileID: -6465566751694194690, guid: 57579e4699e2b3c4eaf253547a7a48b2, type: 3}
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
@@ -69,6 +68,8 @@ Material:
     - _ElectricityAmount: 10
     - _ElectricityScale: 20
     - _ElectricityThickness: 0
+    - _EmissionAmount: 0.11
+    - _FresnelAmount: 0.44
     - _GlossMapScale: 1
     - _Glossiness: 0.783
     - _GlossyReflections: 1
@@ -85,6 +86,7 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
+    - _BaseColor: {r: 0.73008364, g: 3.031434, b: 0, a: 1}
     - _BottomColor: {r: 1, g: 1, b: 1, a: 0}
     - _Color: {r: 0.64960736, g: 0.972549, b: 0.22352937, a: 1}
     - _ElectricitySpeed: {r: 0, g: 0.5, b: 0, a: 0}
@@ -93,3 +95,16 @@ Material:
     - _SaberColor: {r: 0.42763406, g: 0.9811321, b: 0.24528292, a: 0}
     - _TopColor: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
+--- !u!114 &6431675914406737034
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639247ca83abc874e893eb93af2b5e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 0
