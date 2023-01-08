@@ -71,11 +71,23 @@ public class Player : MonoBehaviour
             GameObject elev = GameObject.Find("Hissi");
             this.gameObject.transform.SetParent(elev.transform);
         }
+        if (other.CompareTag("ElevatorTwo"))
+        {
+            //transform.SetParent(other.transform);
+            GameObject elev = GameObject.Find("HissiTwo");
+            this.gameObject.transform.SetParent(elev.transform);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Elevator"))
+        {
+            //transform.SetParent(GameObject.Find("PlayerHolder").transform);
+            GameObject plrHold = GameObject.Find("PlayerHolder");
+            this.gameObject.transform.SetParent(plrHold.transform);
+        }
+        if (other.CompareTag("ElevatorTwo"))
         {
             //transform.SetParent(GameObject.Find("PlayerHolder").transform);
             GameObject plrHold = GameObject.Find("PlayerHolder");
@@ -102,4 +114,5 @@ public class Player : MonoBehaviour
             transform.SetParent(GameObject.Find("PlayerHolder").transform); 
         }
     }
+
 }

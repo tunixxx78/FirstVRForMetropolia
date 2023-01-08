@@ -40,6 +40,8 @@ public class FireBulletOnActivate : MonoBehaviour
             GameObject spawnedBullet = Instantiate(bullet);
             spawnedBullet.transform.position = spawnPoint.position;
             spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * fireSpeed * Time.deltaTime;
+            
+            //bulletInstance.GetComponent<Rigidbody>().AddForce(targetDirection * bulletSpeed * Time.deltaTime, ForceMode.Impulse);
             Destroy(spawnedBullet, 5f);
 
             ammoAmount--;
