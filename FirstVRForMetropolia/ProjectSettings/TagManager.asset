@@ -16,6 +16,7 @@ TagManager:
   - Enemy
   - Elevator
   - ElevatorTwo
+  - DropDetector
   layers:
   - Default
   - TransparentFX
