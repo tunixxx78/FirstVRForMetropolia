@@ -225,6 +225,7 @@ GameObject:
   - component: {fileID: 7136486666541102081}
   - component: {fileID: 7136486666541102082}
   - component: {fileID: 7136486666541102083}
+  - component: {fileID: 4924994212480718215}
   m_Layer: 0
   m_Name: EnemyThree
   m_TagString: Enemy
@@ -349,6 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPLR: {fileID: 0}
+  hitPosition: {fileID: 0}
   noticeDistance: 10
   attackDistance: 2
   shootingDistance: 15
@@ -367,6 +369,8 @@ MonoBehaviour:
   enemyBaseAnimator: {fileID: 5833256752524845233}
   enemyHealth: 3
   enemyMaxHealth: 0
+  enemyFirst: {fileID: 0}
+  enemySecond: {fileID: 0}
 --- !u!114 &7136486666541102083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,6 +386,20 @@ MonoBehaviour:
   ammoPrefab: {fileID: 2017626871956775719, guid: 2aa9e2b09ee10e3478e5b4b09092be5a, type: 3}
   ammoSpawnPoint: {fileID: 7136486666533412390}
   bulletSpeed: 100
+--- !u!136 &4924994212480718215
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136486666541102084}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.63
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &2162201981499401004
 PrefabInstance:
   m_ObjectHideFlags: 0

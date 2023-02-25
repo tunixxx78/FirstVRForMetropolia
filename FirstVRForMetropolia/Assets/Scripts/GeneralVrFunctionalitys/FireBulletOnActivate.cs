@@ -9,10 +9,11 @@ public class FireBulletOnActivate : MonoBehaviour
     public Transform spawnPoint;
     public float fireSpeed = 1000, plrShootDelay;
 
-    public int ammoAmount = 10;
+    //public int ammoAmount = 10;
 
     AmmoBarScript ammoBarScript;
     SFXHOLDER sFXHOLDER;
+    GunManager gunManager;
 
     bool canShoot;
 
@@ -20,6 +21,7 @@ public class FireBulletOnActivate : MonoBehaviour
     {
         ammoBarScript = FindObjectOfType<AmmoBarScript>();
         sFXHOLDER = FindObjectOfType<SFXHOLDER>();
+        gunManager = FindObjectOfType<GunManager>();
         canShoot = true;
     }
 
@@ -28,24 +30,32 @@ public class FireBulletOnActivate : MonoBehaviour
         XRGrabInteractable grabbable = GetComponent<XRGrabInteractable>();
         grabbable.activated.AddListener(FireBullet);
 
-        ammoBarScript.SetMaxAmmo(ammoAmount);
+        ammoBarScript.SetMaxAmmo(gunManager.ammoAmount);
     }
 
     public void FireBullet(ActivateEventArgs arg)
     {
-        if (canShoot && ammoAmount > 0)
+        if (canShoot && gunManager.ammoAmount > 0)
         {
             canShoot = false;
             sFXHOLDER.blaster.Play();
             GameObject spawnedBullet = Instantiate(bullet);
             spawnedBullet.transform.position = spawnPoint.position;
-            spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * fireSpeed * Time.deltaTime;
-            
+
+            Transform dir = spawnPoint;
+
+            //spawnedBullet.GetComponent<PLRBullet>().ShootingBullets(dir);
+
+
+            //spawnedBullet.GetComponent<Rigidbody>().velocity = spawnPoint.forward * fireSpeed * Time.deltaTime;
+
+            spawnedBullet.GetComponent<Rigidbody>().AddForce(spawnPoint.forward * fireSpeed * Time.deltaTime, ForceMode.Impulse);
+
             //bulletInstance.GetComponent<Rigidbody>().AddForce(targetDirection * bulletSpeed * Time.deltaTime, ForceMode.Impulse);
             Destroy(spawnedBullet, 5f);
 
-            ammoAmount--;
-            ammoBarScript.SetAmmo(ammoAmount);
+            gunManager.ammoAmount--;
+            ammoBarScript.SetAmmo(gunManager.ammoAmount);
 
             StartCoroutine(CanShootDelay());
         }

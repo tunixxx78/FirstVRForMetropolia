@@ -5,5 +5,5 @@ using UnityEngine.Audio;
 
 public class SFXHOLDER : MonoBehaviour
 {
-    public AudioSource alarmClock, saberOn, saberOff, saber, slidingDoor, door, openingWall, blaster;
+    public AudioSource alarmClock, saberOn, saberOff, saber, slidingDoor, door, openingWall, blaster, enemyHit;
 }

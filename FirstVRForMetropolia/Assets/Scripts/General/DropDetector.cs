@@ -7,12 +7,13 @@ public class DropDetector : MonoBehaviour
 {
     //[SerializeField] GameObject gameoverScreen;
     [SerializeField] float delayTime;
+    [SerializeField] GameObject deathParticle;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            //gameoverScreen.SetActive(true);
+            deathParticle.SetActive(true);
             StartCoroutine(reStartScene());
         }
     }
@@ -21,7 +22,7 @@ public class DropDetector : MonoBehaviour
     {
         if(collision.collider.tag == "Player")
         {
-            //gameoverScreen.SetActive(true);
+            deathParticle.SetActive(true);
             StartCoroutine(reStartScene());
         }
     }
