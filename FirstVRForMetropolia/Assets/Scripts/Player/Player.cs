@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -11,17 +12,35 @@ public class Player : MonoBehaviour
     [SerializeField] int plrHealth = 10;
     [SerializeField] int plrMaxHealth;
 
+    [SerializeField] GameObject deathParticle;
+    [SerializeField] float deathDelay;
+
+    GunManager gunManager;
+    VoiceoverHolder voiceover;
+
     private void Awake()
     {
+        gunManager = GetComponent<GunManager>();
         healthBarScript = GetComponentInChildren<HealthBarScript>();
         ammoBarScript = GetComponentInChildren<AmmoBarScript>();
         fireBulletOnActivate = FindObjectOfType<FireBulletOnActivate>();
         plrMaxHealth = plrHealth;
+
+        voiceover = FindObjectOfType<VoiceoverHolder>();
     }
 
     private void Start()
     {
         healthBarScript.SetMaxValue(plrHealth);
+    }
+
+    private void Update()
+    {
+        if(plrHealth <= 0)
+        {
+            deathParticle.SetActive(true);
+            StartCoroutine(KillPLR(deathDelay));
+        }
     }
 
 
@@ -30,8 +49,8 @@ public class Player : MonoBehaviour
         if (other.CompareTag("Ammo"))
         {
             Debug.Log("Ammo osuu pelaajaan!");
-            ammoBarScript.SetMaxAmmo(fireBulletOnActivate.ammoAmount + 5);
-            fireBulletOnActivate.ammoAmount += 5;
+            ammoBarScript.SetMaxAmmo(gunManager.ammoAmount + 5);
+            gunManager.ammoAmount += 5;
 
             Destroy(other.gameObject, 1f);
         }
@@ -39,7 +58,7 @@ public class Player : MonoBehaviour
         {
             int healthCollectibleAmount = other.gameObject.GetComponent<HealthObject>().healthAmount;
 
-            if(plrHealth <= (plrHealth + healthCollectibleAmount))
+            if(plrHealth + healthCollectibleAmount <= plrMaxHealth)
             {
                 plrHealth = plrHealth + healthCollectibleAmount;
                 healthBarScript.SetHealth(plrHealth);
@@ -77,6 +96,10 @@ public class Player : MonoBehaviour
             GameObject elev = GameObject.Find("HissiTwo");
             this.gameObject.transform.SetParent(elev.transform);
         }
+        if (other.CompareTag("ExitRoom"))
+        {
+            voiceover.wayBack.Play();
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -113,6 +136,13 @@ public class Player : MonoBehaviour
         {
             transform.SetParent(GameObject.Find("PlayerHolder").transform); 
         }
+    }
+
+    IEnumerator KillPLR(float delayTime)
+    {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        yield return new WaitForSeconds(delayTime);
+        SceneManager.LoadScene(currentScene);
     }
 
 }

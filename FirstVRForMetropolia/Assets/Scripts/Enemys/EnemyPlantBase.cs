@@ -1,23 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class EnemyPlantBase : MonoBehaviour
 {
-    [SerializeField] float noticeDistance, attackDistance;
+    [SerializeField] float noticeDistance, attackDistance, attackSounDelayAmount;
     [SerializeField] Transform plr;
     Animator plantAnimator;
     Vector3 position;
-    bool hasNoticed;
+    bool hasNoticed, canPlayAttackSound;
     [SerializeField] int plantHealth, plantMaxHealth;
     HealthBarScript healthBarScript;
+
+    [SerializeField] AudioSource plantIdle, plantAttack;
 
     private void Awake()
     {
         plantAnimator = GetComponent<Animator>();
         hasNoticed = false;
+        canPlayAttackSound = true;
         healthBarScript = GetComponentInChildren<HealthBarScript>();
         plantMaxHealth = plantHealth;
+        plantIdle.Play();
     }
 
     private void Start()
@@ -32,10 +37,15 @@ public class EnemyPlantBase : MonoBehaviour
         {
             plantAnimator.SetTrigger("Threat");
         }
-        if(Vector3.Distance(position, plr.position) <= attackDistance)
+        if(Vector3.Distance(position, plr.position) <= attackDistance && canPlayAttackSound == true)
         {
+            canPlayAttackSound = false;
             hasNoticed = true;
             plantAnimator.SetTrigger("Bite");
+            plantAttack.Play();
+            
+
+            StartCoroutine(attackSoundDelay());
         }
         if (Vector3.Distance(position, plr.position) > attackDistance)
         {
@@ -65,5 +75,10 @@ public class EnemyPlantBase : MonoBehaviour
             plantHealth--;
             healthBarScript.SetHealth(plantHealth);
         }
+    }
+    IEnumerator attackSoundDelay()
+    {
+        yield return new WaitForSeconds(attackSounDelayAmount);
+        canPlayAttackSound = true;
     }
 }

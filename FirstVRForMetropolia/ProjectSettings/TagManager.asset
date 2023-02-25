@@ -17,6 +17,8 @@ TagManager:
   - Elevator
   - ElevatorTwo
   - DropDetector
+  - FinnishLine
+  - ExitRoom
   layers:
   - Default
   - TransparentFX

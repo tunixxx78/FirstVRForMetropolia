@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4418336753329852222}
   - component: {fileID: 4418336753329852223}
   - component: {fileID: 4418336753329852216}
+  - component: {fileID: 7007697375129145807}
   m_Layer: 8
   m_Name: Blaster_real
   m_TagString: Untagged
@@ -87,7 +88,6 @@ MonoBehaviour:
   spawnPoint: {fileID: 4418336753484567501}
   fireSpeed: 1000
   plrShootDelay: 0.2
-  ammoAmount: 10
 --- !u!114 &4418336753329852223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,6 +233,18 @@ MonoBehaviour:
   leftDirectGrap: {fileID: 0}
   rightDirectGrap: {fileID: 0}
   rightRayHoldGrap: {fileID: 0}
+--- !u!114 &7007697375129145807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274028204223220737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 008556ff9108377459b5468aef6b0a7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &274028204223220741
 GameObject:
   m_ObjectHideFlags: 0

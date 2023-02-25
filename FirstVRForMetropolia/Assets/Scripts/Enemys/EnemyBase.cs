@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Audio;
 
 public class EnemyBase : MonoBehaviour
 {
     NavMeshAgent enemyAgent;
-    public Transform targetPLR;
+    public Transform targetPLR, hitPosition;
     [SerializeField] float noticeDistance, attackDistance, shootingDistance, enemySpeed, onHitDelay;
     Vector3 position;
     [SerializeField] bool enemyOne, enemyTwo, enemyThree, canShoot, canWalk, canAttack, canFunctions, canBeHit;
@@ -18,6 +19,10 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] int enemyHealth, enemyMaxHealth;
     HealthBarScript enemyHealthBarScript;
 
+    [SerializeField] AudioSource enemyFirst, enemySecond;
+
+    SFXHOLDER sFXHOLDER;
+
     private void Awake()
     {
         enemyAgent = GetComponent<NavMeshAgent>();
@@ -28,6 +33,12 @@ public class EnemyBase : MonoBehaviour
         canWalk = true;
         canFunctions = true;
         canBeHit = true;
+        if (enemyOne)
+        {
+            enemyFirst.Play();
+        }
+        
+        sFXHOLDER = FindObjectOfType<SFXHOLDER>();
     }
 
     private void Start()
@@ -36,6 +47,10 @@ public class EnemyBase : MonoBehaviour
         canShoot = true;
         enemyAgent.speed = 0;
         enemyHealthBarScript.SetMaxValue(enemyHealth);
+        if (enemyOne)
+        {
+            enemySecond.Play();
+        }
     }
 
     private void Update()
@@ -94,7 +109,7 @@ public class EnemyBase : MonoBehaviour
                 enemyAgent.isStopped = true;
                 if (enemyOne || enemyThree)
                 {
-                    Destroy(this.gameObject, 1.5f);
+                    Destroy(this.gameObject, 0.5f);
                 }
                 if (enemyTwo)
                 {
@@ -113,6 +128,13 @@ public class EnemyBase : MonoBehaviour
         {
             if (collision.collider.tag == "Blade" || collision.collider.tag == "Bullet")
             {
+                if (enemyOne)
+                {
+                    enemyBaseAnimator.SetTrigger("EnemyHit");
+                    enemyAgent.SetDestination(hitPosition.position);
+                }
+                
+                sFXHOLDER.enemyHit.Play();
                 canBeHit = false;
                 enemyHealth--;
                 enemyHealthBarScript.SetHealth(enemyHealth);
@@ -128,6 +150,13 @@ public class EnemyBase : MonoBehaviour
         {
             if (other.CompareTag("Blade"))
             {
+                if (enemyOne)
+                {
+                    enemyBaseAnimator.SetTrigger("EnemyHit");
+                    enemyAgent.SetDestination(hitPosition.position);
+                }
+                
+                sFXHOLDER.enemyHit.Play();
                 canBeHit = false;
                 enemyHealth--;
                 enemyHealthBarScript.SetHealth(enemyHealth);
